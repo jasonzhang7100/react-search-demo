@@ -1,0 +1,15 @@
+body {
+  background-color: #f6f6f6;
+}
+
+a {
+  text-decoration: none;
+}
+
+.MuiButton-root {
+  margin-left: .5rem !important;
+}
+
+.search {
+  text-align: left;
+}
