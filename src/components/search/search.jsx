@@ -1,28 +1,25 @@
-import React from 'react'
-import Button from '@material-ui/core/Button'
-import Input from '@material-ui/core/Input'
-import Pubsub from 'pubsub-js'
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import Pubsub from 'pubsub-js';
 
-import './search.scss'
+const Search = () => {
 
-class Search extends React.Component {
-  handleClick = () => {
-    const searchName = this.searchName.value.trim()
+  const inputRef = React.useRef();
+
+  const handleClick = () => {
+    const searchName = inputRef.current.value.trim();
     if (searchName) {
-      Pubsub.publish('search', searchName)
+      Pubsub.publish('search', searchName);
     }
-  }
+  };
 
-  render() {
-    return (
-      <>
-        <Input placeholder="Input name to search" className="input-area" inputRef={input => this.searchName = input} />
-        <Button variant="contained" color="primary" onClick={this.handleClick}>
-          Search
-        </Button>
-      </>
-    )
-  }
-}
+  return (
+    <div className="search">
+      <Input placeholder="Enter Name to Search" className="input-area" inputRef={inputRef} />
+      <Button variant="contained" color="primary" onClick={handleClick}>Search</Button>
+    </div>
+  );
+};
 
-export default Search
+export default Search;

@@ -1,25 +1,33 @@
-import React, { Component } from 'react'
-import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
-import Search from './components/search/search'
-import UserList from './components/user-list/user-list'
+import Search from './components/Search/Search';
+import UserList from './components/UserList/UserList';
+import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Paper><Search /></Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper><UserList /></Paper>
-          </Grid>
-        </Grid>
-      </>
-    )
-  }
-}
+const useStyles = makeStyles(theme => ({
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary
+  },
+}));
 
-export default App
+const App = () => {
+  const classes = useStyles();
+
+  return (
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}><Search /></Paper>
+      </Grid>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}><UserList /></Paper>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default App;
